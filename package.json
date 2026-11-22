@@ -1,0 +1,22 @@
+{
+  "name": "student-second-hand-marketplace",
+  "version": "1.0.0",
+  "description": "College student second-hand marketplace built with Node.js, Express and PostgreSQL",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "db:setup": "psql -U postgres -d student_marketplace -f database/schema.sql"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

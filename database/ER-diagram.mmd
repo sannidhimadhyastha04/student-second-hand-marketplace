@@ -1,0 +1,59 @@
+erDiagram
+    USERS ||--o{ PRODUCTS : sells
+    CATEGORIES ||--o{ PRODUCTS : classifies
+    USERS ||--o{ PURCHASE_REQUESTS : makes
+    PRODUCTS ||--o{ PURCHASE_REQUESTS : receives
+    PURCHASE_REQUESTS ||--o| TRANSACTIONS : results_in
+    USERS ||--o{ TRANSACTIONS : buys
+    USERS ||--o{ TRANSACTIONS : sells
+    TRANSACTIONS ||--o| REVIEWS : receives
+    USERS ||--o{ REVIEWS : writes
+
+    USERS {
+        int user_id PK
+        varchar name
+        varchar email UK
+        varchar password_hash
+        varchar phone UK
+        varchar department
+        timestamp created_at
+    }
+    CATEGORIES {
+        int category_id PK
+        varchar category_name UK
+    }
+    PRODUCTS {
+        int product_id PK
+        int seller_id FK
+        int category_id FK
+        varchar product_name
+        text description
+        numeric price
+        varchar condition
+        varchar status
+        timestamp created_at
+    }
+    PURCHASE_REQUESTS {
+        int request_id PK
+        int product_id FK
+        int buyer_id FK
+        timestamp request_date
+        varchar request_status
+    }
+    TRANSACTIONS {
+        int transaction_id PK
+        int request_id FK, UK
+        int buyer_id FK
+        int seller_id FK
+        numeric amount
+        timestamp transaction_date
+        varchar status
+    }
+    REVIEWS {
+        int review_id PK
+        int transaction_id FK, UK
+        int reviewer_id FK
+        int rating
+        text comment
+        timestamp review_date
+    }
